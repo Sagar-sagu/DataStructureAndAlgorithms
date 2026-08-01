@@ -203,7 +203,7 @@ public class SinglyLinkedList{
       }
       else if (usrGaveType == 2) {
         if (StringHead == null){
-          System.out.println("Linked List is Empty? True");
+          System.out.println("Not Yet Insert Any Node");
           return;
         }
         NodeStructure tempVar = StringHead;
@@ -485,7 +485,7 @@ public class SinglyLinkedList{
         }
         else if (usrGaveType == 2) {
           if (StringHead == null){
-            System.out.println("Linked List is Empty? True");
+            System.out.println("Not Yet Insert Any Node");
             return;
           }
           NodeStructure tempVar = StringHead;
@@ -534,7 +534,7 @@ public class SinglyLinkedList{
         }
         else if (usrGaveType == 2) {
           if (StringHead == null){
-            System.out.println("Linked List is Empty? True");
+            System.out.println("Not Yet Insert Any Node");
             return;
           }
           int count = 0;

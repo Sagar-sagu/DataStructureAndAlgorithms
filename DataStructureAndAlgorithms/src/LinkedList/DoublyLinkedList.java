@@ -3,32 +3,41 @@ package src.LinkedList;
 import java.util.Scanner;
 
 public class DoublyLinkedList{
+
   //inner class of outer class
   public static class NodeStructure{
     int IntegerData;
     NodeStructure nextInteger;
+    NodeStructure previousInteger;
     String  StringData;
     NodeStructure nextString;
+    NodeStructure previousString;
 
     //inner class constructor
     public NodeStructure(int IntegerData){
       this.IntegerData = IntegerData;
       nextInteger = null;
+      previousInteger = null;
     }
 
     public NodeStructure(String StringData){
       this.StringData = StringData;
       nextString = null;
+      previousString = null;
     }
   }
-  //var declaration
+
+  //global var declaration
   static Scanner scan = new Scanner(System.in);
   static NodeStructure newNode = null;
   static int usrGaveType;
   public static NodeStructure IntegerHead=null;
   public static NodeStructure StringHead=null;
+  public static NodeStructure IntegerTail=null;
+  public static NodeStructure StringTail=null;
   static NodeStructure tempVar;
-  //Linked List operations Methods
+
+  //Doubly Linked List operations Methods
   public void CreateLinkedList(){
     try {
       System.out.println("");
@@ -55,14 +64,14 @@ public class DoublyLinkedList{
       System.out.println("");
       if ((usrGaveType != 0) || (usrGaveType != 0)) {
         if (usrGaveType == 1) {
-          if (IntegerHead == null){
+          if (IntegerHead == null && IntegerTail == null){
             System.out.println("Linked List is Empty? True");
             return;
           }
           System.out.println("Linked List is  Empty? False");
         }
         else if (usrGaveType == 2) {
-          if (StringHead == null){
+          if (StringHead == null && StringTail == null){
             System.out.println("Linked List is Empty? True");
             return;
           }
@@ -86,7 +95,12 @@ public class DoublyLinkedList{
           System.out.println("Enter Integer Node Data");
           int IntegerNodeData = scan.nextInt();
           newNode = new NodeStructure(IntegerNodeData);
+          if (IntegerHead == null) {
+            IntegerHead = newNode;
+            IntegerTail = newNode;
+          }
           newNode.nextInteger = IntegerHead;
+          IntegerHead.previousInteger = newNode;
           IntegerHead = newNode;
           System.out.println("Inserted Node Succesfully");
         }
@@ -94,7 +108,12 @@ public class DoublyLinkedList{
           System.out.println("Enter String Node Data");
           String StringNodeData = scan.nextLine();
           NodeStructure newNode = new NodeStructure(StringNodeData);
+          if (StringHead == null) {
+          StringHead = newNode;
+          StringTail = newNode;
+          }
           newNode.nextString = StringHead;
+          StringHead.previousString = newNode;
           StringHead = newNode;
           System.out.println("Inserted Node Succesfully");
         }
