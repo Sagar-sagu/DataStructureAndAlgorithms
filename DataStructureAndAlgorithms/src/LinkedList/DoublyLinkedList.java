@@ -210,14 +210,30 @@ public class DoublyLinkedList{
             System.out.println("Not Yet Insert Any Node");
             return;
           }
-          NodeStructure tempVar = IntegerHead;
-          System.out.println("Linked List elements are:");
-          System.out.println("Note: AONN --> Address Of Next Node");
-          while (tempVar != null){
-            System.out.print("|" + tempVar.IntegerData + "|AONN|" + "->");
-            tempVar = tempVar.nextInteger;
+          System.out.println("");
+          System.out.println("1.Assending order");
+          System.out.println("2.Dessending order");
+          System.out.println("Select choice (1/2) : ");
+          int getChoice = scan.nextInt();
+          if (getChoice == 1) {
+            NodeStructure tempVar = IntegerHead;
+            System.out.println("Linked List elements are:");
+            System.out.println("Note: AONN --> Address Of Next Node");
+            while (tempVar != null){
+              System.out.print("|" + tempVar.IntegerData + "|AONN|" + "->");
+              tempVar = tempVar.nextInteger;
+            }
+            System.out.println("null");
+          }else if (getChoice == 2) {
+            NodeStructure tempVar = IntegerTail;
+            System.out.println("Linked List elements are:");
+            System.out.println("Note: AONN --> Address Of Next Node");
+            while (tempVar != null){
+              System.out.print("|" + tempVar.IntegerData + "|AONN|" + "->");
+              tempVar = tempVar.previousInteger;
+            }
+            System.out.println("null");
           }
-          System.out.println("null");
         }
       }
       else if (usrGaveType == 2) {
@@ -225,14 +241,30 @@ public class DoublyLinkedList{
           System.out.println("Linked List is Empty? True");
           return;
         }
-        NodeStructure tempVar = StringHead;
-        System.out.println("Linked List elements are:");
-        System.out.println("Note: AONN --> Address Of Next Node");
-        while (tempVar != null){
-          System.out.print("|" + tempVar.StringData + "|AONN|" + "->");
-          tempVar = tempVar.nextString;
+        System.out.println("");
+        System.out.println("1.Assending order");
+        System.out.println("2.Dessending order");
+        System.out.println("Select choice (1/2) : ");
+        int getChoice = scan.nextInt();
+        if (getChoice == 1) {
+          NodeStructure tempVar = StringHead;
+          System.out.println("Linked List elements are:");
+          System.out.println("Note: AONN --> Address Of Next Node");
+          while (tempVar != null){
+            System.out.print("|" + tempVar.StringData + "|AONN|" + "->");
+            tempVar = tempVar.nextString;
+          }
+          System.out.println("null");
+        }else if (getChoice == 2) {
+          NodeStructure tempVar = StringTail;
+          System.out.println("Linked List elements are:");
+          System.out.println("Note: AONN --> Address Of Next Node");
+          while (tempVar != null){
+            System.out.print("|" + tempVar.StringData + "|AONN|" + "->");
+            tempVar = tempVar.previousString;
+          }
+          System.out.println("null");
         }
-        System.out.println("null");
       }
   	}catch (Exception e) {
   		System.out.println("Exception: " + e);

@@ -3,6 +3,7 @@ package src.LinkedList;
 import java.util.Scanner;
 
 public class SinglyLinkedList{
+
   //inner class of outer class
   public static class NodeStructure{
     int IntegerData;
@@ -21,6 +22,7 @@ public class SinglyLinkedList{
       nextString = null;
     }
   }
+  
   //var declaration
   static Scanner scan = new Scanner(System.in);
   static NodeStructure newNode = null;
@@ -28,6 +30,7 @@ public class SinglyLinkedList{
   public static NodeStructure IntegerHead=null;
   public static NodeStructure StringHead=null;
   static NodeStructure tempVar;
+
   //Linked List operations Methods
   public void CreateLinkedList(){
     try {
@@ -182,43 +185,43 @@ public class SinglyLinkedList{
     }
   }
 
-  public  void DisplayNodes(){
-  	try {
-      System.out.println("");
-      if ((usrGaveType != 0) || (usrGaveType != 0)) {
-        if (usrGaveType == 1) {
-          if (IntegerHead == null){
-            System.out.println("Not Yet Insert Any Node");
-            return;
-          }
-          NodeStructure tempVar = IntegerHead;
-          System.out.println("Linked List elements are:");
-          System.out.println("Note: AONN --> Address Of Next Node");
-          while (tempVar != null){
-            System.out.print("|" + tempVar.IntegerData + "|AONN|" + "->");
-            tempVar = tempVar.nextInteger;
-          }
-          System.out.println("null");
+public  void DisplayNodes(){
+    try {
+        System.out.println("");
+        if ((usrGaveType != 0) || (usrGaveType != 0)) {
+            if (usrGaveType == 1) {
+                if (IntegerHead == null){
+                  System.out.println("Not Yet Insert Any Node");
+                  return;
+                }
+                NodeStructure tempVar = IntegerHead;
+                System.out.println("Linked List elements are:");
+                System.out.println("Note: AONN --> Address Of Next Node");
+                while (tempVar != null){
+                  System.out.print("|" + tempVar.IntegerData + "|AONN|" + "->");
+                  tempVar = tempVar.nextInteger;
+                }
+                System.out.println("null");
+            }
         }
-      }
-      else if (usrGaveType == 2) {
-        if (StringHead == null){
-          System.out.println("Not Yet Insert Any Node");
-          return;
+        else if (usrGaveType == 2) {
+            if (StringHead == null){
+              System.out.println("Not Yet Insert Any Node");
+              return;
+            }
+            NodeStructure tempVar = StringHead;
+            System.out.println("Linked List elements are:");
+            System.out.println("Note: AONN --> Address Of Next Node");
+            while (tempVar != null){
+              System.out.print("|" + tempVar.StringData + "|AONN|" + "->");
+              tempVar = tempVar.nextString;
+            }
+            System.out.println("null");
         }
-        NodeStructure tempVar = StringHead;
-        System.out.println("Linked List elements are:");
-        System.out.println("Note: AONN --> Address Of Next Node");
-        while (tempVar != null){
-          System.out.print("|" + tempVar.StringData + "|AONN|" + "->");
-          tempVar = tempVar.nextString;
-        }
-        System.out.println("null");
-      }
-  	}catch (Exception e) {
-  		System.out.println("Exception: " + e);
-  	}
-  }
+    }catch (Exception e) {
+        System.out.println("Exception: " + e);
+    }
+}
 
   public  void InsertAtGivenPosition(){
     try {
