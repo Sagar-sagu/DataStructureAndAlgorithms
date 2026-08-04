@@ -31,10 +31,10 @@ public class DoublyLinkedList{
   static Scanner scan = new Scanner(System.in);
   static NodeStructure newNode = null;
   static int usrGaveType;
-  public static NodeStructure IntegerHead=null;
-  public static NodeStructure StringHead=null;
-  public static NodeStructure IntegerTail=null;
-  public static NodeStructure StringTail=null;
+  public static NodeStructure IntegerHead = null;
+  public static NodeStructure StringHead = null;
+  public static NodeStructure IntegerTail = null;
+  public static NodeStructure StringTail = null;
   static NodeStructure tempVar;
 
   //Doubly Linked List operations Methods
@@ -95,9 +95,10 @@ public class DoublyLinkedList{
           System.out.println("Enter Integer Node Data");
           int IntegerNodeData = scan.nextInt();
           newNode = new NodeStructure(IntegerNodeData);
-          if (IntegerHead == null) {
+          if (IntegerHead == null && IntegerTail == null) {
             IntegerHead = newNode;
             IntegerTail = newNode;
+            return;
           }
           newNode.nextInteger = IntegerHead;
           IntegerHead.previousInteger = newNode;
@@ -111,6 +112,7 @@ public class DoublyLinkedList{
           if (StringHead == null) {
           StringHead = newNode;
           StringTail = newNode;
+          return;
           }
           newNode.nextString = StringHead;
           StringHead.previousString = newNode;
@@ -132,34 +134,30 @@ public class DoublyLinkedList{
       System.out.println("");
       if ((usrGaveType != 0) || (usrGaveType != 0)) {
         if (usrGaveType == 1) {
-        	 if (IntegerHead == null){
+        	 if (IntegerHead == null && IntegerTail == null){
      	     InsertAtBeginning();
            return;
      	    }
-     	    tempVar = IntegerHead;
-     	    while (tempVar.nextInteger != null){
-     	    	tempVar = tempVar.nextInteger;
-     	    }
-     	   System.out.println("Enter Integer Node Data");
-           int IntegerNodeData = scan.nextInt();
-           newNode = new NodeStructure(IntegerNodeData);
-           tempVar.nextInteger = newNode;
-           System.out.println("Inserted Node Succesfully");
+     	    System.out.println("Enter Integer Node Data");
+         int IntegerNodeData = scan.nextInt();
+         newNode = new NodeStructure(IntegerNodeData);
+         IntegerTail.nextInteger = newNode;
+         newNode.previousInteger = IntegerTail;
+         IntegerTail = newNode;
+         System.out.println("Inserted Node Succesfully");
         }
         else if (usrGaveType == 2) {
-        	 if (StringHead == null){
+        	if (StringHead == null && StringTail == null){
      	      InsertAtBeginning();
             return;
-     	    }
-          tempVar = StringHead;
-     	    while (tempVar.nextString != null){
-     	    	tempVar = tempVar.nextString;
-     	    }
-     	   System.out.println("Enter String Node Data");
-           int StringNodeData = scan.nextInt();
-           newNode = new NodeStructure(StringNodeData);
-           tempVar.nextString = newNode;
-           System.out.println("Inserted Node Succesfully");
+       	    }
+          System.out.println("Enter Integer Node Data");
+          int StringNodeData = scan.nextInt();
+          newNode = new NodeStructure(StringNodeData);
+          StringTail.nextString = newNode;
+          newNode.previousString = StringTail;
+          StringTail = newNode;
+         System.out.println("Inserted Node Succesfully");
         }
       }
       else {
@@ -177,18 +175,36 @@ public class DoublyLinkedList{
       if ((usrGaveType != 0) || (usrGaveType != 0)) {
         if (usrGaveType == 1) {
           if (IntegerHead == null){
-            System.out.println("Linked List is Empty");
+            System.out.println("Not Yet Insert Any Node");
             return;
           }
+          if (IntegerHead == IntegerTail) {
+            IntegerHead = null;
+            IntegerTail = null;
+            System.out.println("Deleted Node Succesfully");
+            return;
+          }
+          NodeStructure tempVar = IntegerHead;
           IntegerHead = IntegerHead.nextInteger;
+          IntegerHead.previousInteger = null;
+          tempVar.nextInteger = null;
           System.out.println("Deleted Node Succesfully");
         }
         else if (usrGaveType == 2) {
           if (StringHead == null){
-            System.out.println("Linked List is Empty");
+            System.out.println("Not Yet Insert Any Node");
             return;
           }
+         if (StringHead == StringTail) {
+            StringHead = null;
+            StringTail = null;
+            System.out.println("Deleted Node Succesfully");
+            return;
+          }
+          NodeStructure tempVar = StringHead;
           StringHead = StringHead.nextString;
+          StringHead.previousString = null;
+          tempVar.nextString = null;
           System.out.println("Deleted Node Succesfully");
         }
       }
@@ -211,8 +227,8 @@ public class DoublyLinkedList{
             return;
           }
           System.out.println("");
-          System.out.println("1.Assending order");
-          System.out.println("2.Dessending order");
+          System.out.println("1.traverseForward(Traversing from head to the end of the list)");
+          System.out.println("2.traverseBackward(Traversing from tail to the head)");
           System.out.println("Select choice (1/2) : ");
           int getChoice = scan.nextInt();
           if (getChoice == 1) {
@@ -381,33 +397,36 @@ public class DoublyLinkedList{
       System.out.println("");
       if ((usrGaveType != 0) || (usrGaveType != 0)) {
         if (usrGaveType == 1) {
-        	if (IntegerHead == null){
+        	if (IntegerTail == null){
             System.out.println("Not Yet Insert Any Node");
             return;
      	    }
-          if (IntegerHead.nextInteger == null) {
+          if (IntegerHead == IntegerTail) {
             IntegerHead = null;
+            IntegerTail = null;
             return;
           }
-     	    tempVar = IntegerHead;
-     	    while (tempVar.nextInteger.nextInteger != null){
-     	    	tempVar = tempVar.nextInteger;
-     	    }
-          tempVar.nextInteger = null;
+
+          NodeStructure tempVar = IntegerTail;
+          IntegerTail = IntegerTail.previousInteger;
+          IntegerTail.nextInteger = null;
+          tempVar.previousInteger = null;
         }
         else if (usrGaveType == 2) {
         	 if (StringHead == null){
              System.out.println("Not Yet Insert Any Node");
              return;
      	    }
-          if (StringHead.nextString == null) {
+          if (StringHead == StringTail) {
             StringHead = null;
+            StringTail = null;
             return;
           }
-          tempVar = StringHead;
-     	    while (tempVar.nextString != null){
-     	    	tempVar = tempVar.nextString;
-     	    }
+
+          NodeStructure tempVar = StringTail;
+          StringTail = StringTail.previousInteger;
+          StringTail.nextString = null;
+          tempVar.previousString = null;
         }
       }
       else {
